@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.css';
+import SiteHeader from '../../components/SiteHeader.astro';
 import { documents, publicPdfUrl } from '../../data/documents.mjs';
 export function getStaticPaths() {
   return documents.map((doc) => ({ params: { code: doc.code.toLowerCase() }, props: { doc } }));
@@ -17,7 +18,7 @@ const pdf = publicPdfUrl(doc, base);
 <title>{`Anexo ${doc.code} · ${doc.title} | NexoByte`}</title>
 </head>
 <body>
-<header class="nav"><div class="container"><a class="brand" href={base}>NexoByte<small>EXPEDIENTE ACADÉMICO</small></a><nav class="links" aria-label="Navegación"><a href={`${base}#documentos`}>← Volver al expediente</a></nav></div></header>
+<SiteHeader />
 <main class="section"><div class="container">
 <span class="eyebrow">Anexo {doc.code} · Simulación académica</span>
 <h1>{doc.title}</h1><p class="intro">{doc.description}</p>
