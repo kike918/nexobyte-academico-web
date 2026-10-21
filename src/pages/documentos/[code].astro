@@ -1,0 +1,33 @@
+---
+import '../../styles/global.css';
+import { documents, publicPdfUrl } from '../../data/documents.mjs';
+export function getStaticPaths() {
+  return documents.map((doc) => ({ params: { code: doc.code.toLowerCase() }, props: { doc } }));
+}
+const { doc } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const pdf = publicPdfUrl(doc, base);
+---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="description" content={`Consulta académica del Anexo ${doc.code} de NexoByte S.A.S. — simulación sin validez registral.`}/>
+<title>{`Anexo ${doc.code} · ${doc.title} | NexoByte`}</title>
+</head>
+<body>
+<header class="nav"><div class="container"><a class="brand" href={base}>NexoByte<small>EXPEDIENTE ACADÉMICO</small></a><nav class="links" aria-label="Navegación"><a href={`${base}#documentos`}>← Volver al expediente</a></nav></div></header>
+<main class="section"><div class="container">
+<span class="eyebrow">Anexo {doc.code} · Simulación académica</span>
+<h1>{doc.title}</h1><p class="intro">{doc.description}</p>
+<p class="warning"><strong>SIMULACIÓN ACADÉMICA — SIN VALIDEZ REGISTRAL.</strong> Este documento no acredita constitución, matrícula mercantil, obligaciones tributarias efectivas ni actuaciones ante autoridades.</p>
+{pdf ? <section aria-label={`Visor del anexo ${doc.code}`} style="margin-top:24px">
+  <div class="actions" style="margin:0 0 16px"><a class="btn" href={pdf} download={doc.filename}>Descargar PDF</a><a class="btn alt" href={pdf} target="_blank" rel="noopener noreferrer">Abrir PDF en otra pestaña</a></div>
+  <object data={pdf} type="application/pdf" width="100%" height="720" aria-label={`Vista previa en PDF del anexo ${doc.code}`} style="border:1px solid #dae6f5;border-radius:12px;max-width:100%">
+  <p>El visor PDF no está disponible en este navegador. <a href={pdf} target="_blank" rel="noopener noreferrer">Abrir documento PDF</a>.</p>
+  </object>
+</section> : <section class="card" style="margin-top:24px"><h2>Versión pública en preparación</h2><p>Estamos verificando la legibilidad, los datos personales y la marca de simulación académica de todas las páginas. El visor y la descarga se habilitarán únicamente después de aprobar la copia pública de este anexo.</p><span class="tag">Pendiente de revisión</span></section>}
+</div></main>
+<footer class="footer"><div class="container"><strong>NexoByte S.A.S. · Caso académico UNAD</strong><p>Material educativo ficticio, no constituye documento registral oficial.</p></div></footer>
+</body></html>
