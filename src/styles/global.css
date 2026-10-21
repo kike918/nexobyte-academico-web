@@ -35,3 +35,18 @@
 .detail-article{min-width:0}.detail-panel{scroll-margin-top:115px;margin-bottom:15px;border:1px solid #e0e8f3;border-radius:13px;background:#fff;padding:25px 30px;box-shadow:0 8px 20px #092e5907}.detail-num{font-size:.75rem;font-weight:900;color:#0873e6}.detail-panel h2{font-size:1.5rem;color:#09274e;letter-spacing:-.025em;margin:8px 0 16px}.detail-panel p{line-height:1.78;color:#405873;font-size:.96rem;margin:0 0 14px}.detail-panel p:last-child{margin-bottom:0}.detail-next{background:#eaf4ff;padding:25px;border-radius:13px}.detail-next>strong{display:block;margin-bottom:15px}.detail-links{display:flex;gap:11px;flex-wrap:wrap}.detail-links a{padding:9px 12px;background:white;border:1px solid #bdd9f4;color:#1460b6;border-radius:7px;font-size:.8rem;font-weight:700}
 @media(max-width:1000px){.chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-layout{grid-template-columns:1fr}.detail-toc{position:static}.detail-toc nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.chapter-grid{grid-template-columns:1fr}.detail-toc nav{grid-template-columns:1fr}.detail-panel{padding:20px}.detail-hero{padding:40px 0 44px}}
+
+
+/* Shared compact navigation */
+.shared-links{gap:clamp(9px,1.15vw,18px);flex-wrap:nowrap}
+.shared-links a,.nav-more summary{font-size:.76rem;font-weight:760;white-space:nowrap;color:#27415f}
+.shared-links a[aria-current="page"]{color:#076dd5}
+.nav-more{position:relative}
+.nav-more summary{list-style:none;cursor:pointer;padding:8px 2px;user-select:none}
+.nav-more summary::-webkit-details-marker{display:none}
+.nav-more summary span{margin-left:3px}
+.nav-more-panel{position:absolute;z-index:30;right:0;top:calc(100% + 10px);min-width:200px;background:white;border:1px solid #d8e6f5;border-radius:11px;padding:9px;box-shadow:0 16px 30px #092d5740;display:grid;gap:3px}
+.nav-more-panel a{display:block;padding:10px;border-radius:6px}
+.nav-more-panel a:hover{background:#ecf5ff}
+@media(max-width:1150px){.nav-inner{gap:12px}.shared-links{gap:9px}.shared-links a,.nav-more summary{font-size:.68rem}.nav-cta{padding:10px 12px}}
+@media(max-width:1000px){.shared-links{overflow-x:auto;width:100%;order:3;padding:8px 0;flex:1 1 100%;justify-content:flex-start}.nav-more-panel{right:auto;left:0}.shared-links a,.nav-more summary{font-size:.76rem}}
