@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiadVisuals from '../components/SiadVisuals.astro';
+import SiadConcept from '../components/SiadConcept.astro';
+import ServiceExplorer from '../components/ServiceExplorer.astro';
 import { pages } from '../data/academic-pages.mjs';
 export function getStaticPaths() {
  return Object.entries(pages).map(([slug,page])=>({params:{slug},props:{page,slug}}));
@@ -14,7 +16,9 @@ const paths=[['empresa','Empresa'],['servicios','Servicios y clientes'],['formal
 <body>
 <SiteHeader />
 <main><section class="detail-hero"><div class="container"><a class="detail-back" href={base}>← Volver al inicio</a><p class="detail-kicker">{page.kicker}</p><h1>{page.title}</h1><p>{page.lead}</p><span class="detail-pill">Simulación académica · UNAD · Grupo 102998054_66</span></div></section>
-{slug === 'siad' && <div class="container"><SiadVisuals /></div>}
+{slug === 'siad' && <div class="container"><SiadConcept /><SiadVisuals /></div>}
+{slug === 'servicios' && <div class="container"><ServiceExplorer /></div>}
+{slug === 'formalizacion' && <div class="container"><div class="s8-formal-graphic"><div class="section-kicker">Visualización de capital de apertura</div><h2>Equilibrio patrimonial del supuesto</h2><div class="s8-balance"><div><span>Activos</span><strong>$30.000.000</strong><i style="width:100%"></i></div><div><span>Pasivos</span><strong>$0</strong><i style="width:0%"></i></div><div><span>Patrimonio</span><strong>$30.000.000</strong><i style="width:100%"></i></div></div><p>Activos = pasivos + patrimonio. Capital autorizado, suscrito y pagado en el supuesto: $30 millones; sin obligaciones financieras iniciales.</p></div></div>}
 <div class="container detail-layout"><aside class="detail-toc"><strong>Contenido de esta página</strong><nav aria-label="Índice de contenidos">{page.sections.map((s,i)=><a href={`#apartado-${i+1}`}>{s.title}</a>)}</nav><div class="detail-small">Este recurso explica un caso ficticio y no acredita registros ni operaciones mercantiles reales.</div></aside><article class="detail-article">{page.sections.map((section,i)=><section id={`apartado-${i+1}`} class="detail-panel"><div class="detail-num">{String(i+1).padStart(2,'0')}</div><h2>{section.title}</h2>{section.paras.map(p=><p>{p}</p>)}</section>)}
 <div class="detail-next"><strong>Continúa explorando el caso</strong><div class="detail-links">{paths.filter(([p])=>p!==slug).map(([p,name])=><a href={`${base}${p}/`}>{name} ↗</a>)}<a href={`${base}#documentos`}>Ver los anexos PDF ↗</a></div></div></article></div>
 </main><footer class="footer"><div class="container footer-grid"><a class="brand brand-light" href={base}><span class="brand-logo">N</span><span>NexoByte S.A.S.<small>Centro de Servicios Tecnológicos</small></span></a><div>Proyecto académico · UNAD<br/>Legislación Comercial Nacional e Internacional<br/>Grupo 102998054_66</div><div><strong>Simulación académica</strong><br/>Sin validez registral ni comercial real.</div></div></footer></body></html>
