@@ -59,3 +59,6 @@
 .team-card small{font-size:.68rem;color:#637e99}
 @media(max-width:950px){.team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:580px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Shared contextual navigation on document viewer pages */
+.detail-doc-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}.detail-doc-nav a{display:inline-flex;padding:9px 13px;border:1px solid #cbdff4;border-radius:8px;background:#fff;color:#1459a5;font-size:.78rem;font-weight:750}.detail-doc-nav a:hover{background:#eef6ff}
