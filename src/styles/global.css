@@ -108,3 +108,6 @@
 .nav .nav-cta{order:3}
 .nav-inner{justify-content:space-between}
 }
+
+/* S9 — Imágenes editoriales contextuales */
+.editorial-photo{margin:32px 0 0;display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;overflow:hidden;border-radius:14px;background:#0d2b50;color:#fff;box-shadow:0 12px 32px #082c501a}.editorial-photo img{width:100%;height:260px;object-fit:cover;display:block}.editorial-photo figcaption{padding:26px;display:flex;flex-direction:column;justify-content:center;gap:13px}.editorial-photo figcaption strong{font-size:1.25rem;line-height:1.3}.editorial-photo figcaption span{font-size:.8rem;line-height:1.6;color:#d7e8f7}@media(max-width:700px){.editorial-photo{grid-template-columns:1fr}.editorial-photo img{height:220px}.editorial-photo figcaption{padding:18px}}
