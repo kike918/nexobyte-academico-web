@@ -37,3 +37,7 @@ Total: 21 páginas. Fuente: expedientes aprobados conservados fuera del reposito
 ## Estado de compilación
 
 No se declara aprobado `npm run build`: el entorno de preparación no pudo resolver `registry.npmjs.org`. El workflow `.github/workflows/validate-manual.yml` existe y requiere iniciarse manualmente en GitHub Actions. No se ha iniciado publicación.
+
+## Avance de preparación (21/oct/2026)
+
+Se generaron cinco copias **locales** de los PDF (21 páginas en total) con una franja académica añadida fuera del área original de cada página para no ocultar campos. Las copias están empaquetadas para revisión previa, pero **no han sido subidas a GitHub ni aprobadas para publicación**. El control `approvedPublicCopy` sigue en `false` para los cinco anexos. La revisión de privacidad, fidelidad documental y legibilidad debe completarse antes de activar cada archivo.
