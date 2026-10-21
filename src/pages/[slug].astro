@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
 import { pages } from '../data/academic-pages.mjs';
 export function getStaticPaths() {
  return Object.entries(pages).map(([slug,page])=>({params:{slug},props:{page,slug}}));
@@ -10,7 +11,7 @@ const paths=[['empresa','Empresa'],['servicios','Servicios y clientes'],['formal
 ---
 <!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={page.lead}/><title>{page.title} | NexoByte S.A.S.</title></head>
 <body>
-<header class="nav"><div class="container nav-inner"><a class="brand" href={base}><span class="brand-logo">N</span><span>NexoByte S.A.S.<small>Centro de Servicios Tecnológicos</small></span></a><nav class="links" aria-label="Secciones del expediente"><a href={base}>Inicio</a>{paths.map(([p,title])=><a href={`${base}${p}/`} aria-current={p===slug?'page':undefined}>{title}</a>)}<a href={`${base}#documentos`}>Anexos</a></nav></div></header>
+<SiteHeader />
 <main><section class="detail-hero"><div class="container"><a class="detail-back" href={base}>← Volver al inicio</a><p class="detail-kicker">{page.kicker}</p><h1>{page.title}</h1><p>{page.lead}</p><span class="detail-pill">Simulación académica · UNAD · Grupo 102998054_66</span></div></section>
 <div class="container detail-layout"><aside class="detail-toc"><strong>Contenido de esta página</strong><nav aria-label="Índice de contenidos">{page.sections.map((s,i)=><a href={`#apartado-${i+1}`}>{s.title}</a>)}</nav><div class="detail-small">Este recurso explica un caso ficticio y no acredita registros ni operaciones mercantiles reales.</div></aside><article class="detail-article">{page.sections.map((section,i)=><section id={`apartado-${i+1}`} class="detail-panel"><div class="detail-num">{String(i+1).padStart(2,'0')}</div><h2>{section.title}</h2>{section.paras.map(p=><p>{p}</p>)}</section>)}
 <div class="detail-next"><strong>Continúa explorando el caso</strong><div class="detail-links">{paths.filter(([p])=>p!==slug).map(([p,name])=><a href={`${base}${p}/`}>{name} ↗</a>)}<a href={`${base}#documentos`}>Ver los anexos PDF ↗</a></div></div></article></div>
